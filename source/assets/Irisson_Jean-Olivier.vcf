@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:2.1
+N:Irisson;Jean-Olivier;;;
+FN:Irisson Jean-Olivier
+ORG;CHARSET=utf-8:Observatoire Océanologique de Villefranche-sur-Mer;LOV
+TITLE;CHARSET=utf-8:Maître de Conférences
+EMAIL;INTERNET;WORK:irisson@normalesup.org
+TEL;WORK:04 93 76 38 04
+ADR;WORK;CHARSET=utf-8:;;Observatoire Océanologique de Villefranche-sur-Mer\nStation Zoologique\, B.P. 28\, Chemin du Lazaret;Villefranche-sur-Mer;;06234;France
+URL;type=WORK;type=pref:http\://jo.irisson.com
+URL:skype\:jo.irisson
+BDAY;value=date:1980-07-10
+END:VCARD
