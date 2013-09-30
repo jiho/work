@@ -37,32 +37,32 @@
   <body class="<%= page_classes %>">
 
 	<div class="container">
-		<div class="row">
-			<div class="col-md-12"> 
-				<header>
+		<header>
+			<div class="row">
+				<div class="col-sm-12">
 					<%= partial "header" %>
-				</header>
+				</div>
 			</div>
-		</div>
+		</header>
 
 		<div class="row">
-			<article class="col-md-8">
+			<article class="col-sm-8">
 				<!-- <div id="debug" onClick="debugg()"><p>Debug messages</p></div> -->
 				<%= yield %>
 			</article>
 
-			<aside class="col-md-4 hidden-print">
+			<aside class="col-sm-4 hidden-print">
 				<%= partial "sidebar"%>
 			</aside>
 		</div>
 
-		<div class="row">
-			<div class="col-md-12"> 
-				<footer class="hidden-print">
+		<footer class="hidden-print">
+			<div class="row">
+				<div class="col-sm-12">
 					<%= partial "footer" %>
-				</footer>
+				</div>
 			</div>
-		</div>
+		</footer>
 	</div>
 
 
