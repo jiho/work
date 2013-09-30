@@ -17,3 +17,4 @@ end
 
 gem "kramdown"
 # gem "middleman-navigation"
+gem "middleman-deploy"
