@@ -35,6 +35,34 @@
 
   <body class="<%= page_classes %>">
 
+  	<div style="position: absolute; top: 0; right: 0">
+  		<canvas id="bubbles" width="500px" height="500px" class="pull-right">
+  		</canvas>
+
+  		<script>
+	  		var c=document.getElementById("bubbles");
+	  		var ctx=c.getContext("2d");
+			// Width and height of the region where content is actually drawn
+	  		var w=200;
+	  		var h=200;
+	  		for (var i=0; i<11; i++) {
+				// Location
+	  			var x=Math.random()*w;
+	  			var y=Math.random()*h;
+				// Radius: increases towards the top right
+				var scalingFactor=500;
+	  			var r=(h-y)*x / scalingFactor;
+	  			ctx.beginPath();
+	  			ctx.arc(x+300,y,r,0,2*Math.PI);
+				// NB: offset x position to avoid cutting circles on the edge of the canvas
+				// Set stroke to be blue like the rest of the website and less transparent when going towards the top
+	  	        ctx.strokeStyle = 'rgba(51,51,175,' + (1-y/h) + ')';
+	  			ctx.stroke();
+	  		}
+  		</script>
+
+  	</div>
+
 	<div class="container">
 		<header>
 			<div class="row">
@@ -63,31 +91,6 @@
 				</div>
 			</div>
 		</footer>
-	</div>
-
-	<div style="position: absolute; top: 0; right: 0">
-		<canvas id="bubbles" width="500px" height="500px" class="pull-right">
-		</canvas>
-
-		<script>
-		var c=document.getElementById("bubbles");
-		var ctx=c.getContext("2d");
-		var w=200;
-		var h=200;
-		ctx.beginPath();
-		for (var i=0; i<11; i++) {
-			var x=Math.random()*w;
-			var y=Math.random()*h;
-			var r=(h-y)*x/500;
-			ctx.beginPath();
-			// arc: x, y, r, start, stop
-			ctx.arc(x+300,y,r,0,2*Math.PI);
-	        // ctx.strokeStyle = 'black';
-	        ctx.strokeStyle = 'rgba(88,139,204,' + (1-y/h) + ')';
-			ctx.stroke();
-		}
-		</script>
-
 	</div>
 
   </body>
