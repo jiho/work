@@ -18,3 +18,5 @@ end
 gem "kramdown"
 # gem "middleman-navigation"
 gem "middleman-deploy"
+gem "less"
+gem "therubyracer"
