@@ -17,7 +17,8 @@ vdbgbesrt
 <h3><%= category.data.title %></h3>
 <p><%= category.data.stub %></p>
 
-<% category.children.each do |page| %>
+<% if category.children.select { |page| page.path =~ /\.html/ }.any? %>
+<% category.children.select { |page| page.path =~ /\.html/ }.each do |page| %>
 <ul>
 <li><a class="activity_title" href="<%= page.url %>"><%= page.data.title %></a>
 <%= page.data.stub %></li>
