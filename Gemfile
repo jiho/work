@@ -15,9 +15,18 @@ platforms :mri_18 do
   gem "ruby18_source_location"
 end
 
+# Better markdown engine (with multimarkdown extensions)
 gem "kramdown"
-# gem "middleman-navigation"
+
+# Allows to deploy middleman via rsync
 gem "middleman-deploy"
+
+# Required for compilation of bootstrap less files in css
 gem "less"
+
+# Embed the V8 Javascript Interpreter into Ruby
+# necessary, no idea why :(
 gem "therubyracer"
+
+# Automatic navigation via simple-navigation
 gem "middleman-navigation"
