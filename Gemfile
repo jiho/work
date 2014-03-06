@@ -17,6 +17,7 @@ end
 
 # Better markdown engine (with multimarkdown extensions)
 gem "kramdown"
+# gem "coderay"
 
 # Allows to deploy middleman via rsync
 gem "middleman-deploy"
