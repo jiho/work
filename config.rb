@@ -58,27 +58,26 @@ set :markdown,  :layout_engine => :erb,
                 # Syntax highlighting (does not work for some reason...)
                 :enable_coderay => true,
                 :coderay_line_numbers => :inline
+
+# Assets directories
 set :css_dir, 'assets/stylesheets'
-
 set :js_dir, 'assets/javascripts'
-
 set :images_dir, 'assets/images'
-
 # set :layouts_dir, 'assets/layouts'
 # NB: bug in the current version
-
 set :partials_dir, 'layouts'
 
 # Relative and clean URLs
 # set :relative_links, true
-activate :relative_assets
+# activate :relative_assets
 activate :directory_indexes
 
-# activate :navigation
+# Automatic navigation through middleman-navigation
+activate :navigation
 
 # Deployment plugin
 activate :deploy do |deploy|
-  # deploy.build_before = true # default: false
+  deploy.build_before = false # default: false
   deploy.method = :rsync
   deploy.host   = "oceane.obs-vlfr.fr"
   deploy.path   = "~/public_html/v2"
@@ -91,10 +90,10 @@ end
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
-  activate :minify_css
+  # activate :minify_css
 
   # Minify Javascript on build
-  activate :minify_javascript
+  # activate :minify_javascript
 
   # Enable cache buster
   # activate :asset_hash
@@ -105,6 +104,3 @@ configure :build do
   # Or use a different image path
   # set :http_prefix, "/Content/images/"
 end
-
-
-
