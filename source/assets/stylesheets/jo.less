@@ -1,5 +1,15 @@
+// Import all of bootstrap
 @import "../bootstrap/less/bootstrap.less";
 
+// Customize bootstrap
+@brand-primary: #3333AF;
+@input-border-focus: @brand-primary;
+@text-color: #606060;
+@font-family-monospace: Inconsolata, Menlo, Consolas, "Courier New", monospace;
+
+//-------------------------------------------------------------------------
+
+// Change fonts
 @font-face {
     font-family: 'danielbold';
     src: url('../fonts/danielbd-webfont.eot');
@@ -9,59 +19,55 @@
          url('../fonts/danielbd-webfont.svg#danielbold') format('svg');
     font-weight: normal;
     font-style: normal;
-
 }
 
-.content {
-	padding-bottom: 28px;
-}
-
-footer {
-	padding-top: 28px;
-	padding-bottom: 14px;
-}
-
-body {
-	color: #606060;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-header h1 a {
-	color: #333333;
-}
-
-header h1 a:hover {
-	text-decoration: none;
-}
-
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6
+h1, h2, h3, h4, h5, h6
  {
 	font-family: 'Myriad Pro', sans-serif;
 	font-weight: 600;
 }
 
-.lead,
-.cursive {
+.lead, .cursive {
 	font-family: 'danielbold', 'Georgia', cursive;
+}
+
+
+// Change spacing
+article {
+	padding-bottom: 14px;
+}
+
+footer {
+	padding-top: 14px;
+	padding-bottom: 14px;
 }
 
 .pull-right {
 	margin-left: 14px;
 }
+
 .pull-left {
 	margin-right: 14px;
 }
 
-@brand-primary:         #3333AF;
-@input-border-focus:             @brand-primary;
+
+// Aspect of headers
+h1, h2, h3, h4, h5, h6 {
+    color: #333333;
+    a {
+        color: #333333;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+	a:hover {
+        text-decoration: none;
+    }
+}
+
+
+// External links
+a[href^="http://"]:not([href*="obs-vlfr.fr"]):after,
+a[href^="https://"]:not([href*="obs-vlfr.fr"]):after{
+    content: " ⤤"
+}

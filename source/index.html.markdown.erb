@@ -1,29 +1,60 @@
 ---
+title: Jean-Olivier Irisson
+stub: Maître de conférence, Université Paris VI, Observatoire de Villefranche
+navigation:
+  title: Home
 ---
 
-## Welcome
+I am [Maître de Conférences](http://en.wikipedia.org/wiki/Maître_de_conférence) (i.e. Associate Professor) at the [Laboratoire d'Océanographie de Villefranche](http://www.obs-vlfr.fr/LOV/ "Laboratoire d'Ocanographie de Villefranche") (LOV), in Southern France. My time is split between [research](projects) and [teaching](/teaching/). I study physical-biological interactions in the open ocean and how the behaviour of organisms influences those interactions. I have been largely focussing on the larval phase of fish, but I am also working on the "planktonic" community as a whole. I use modelling, data collection, and experiments to answer my questions. I teach marine ecology, behavioural ecology, as well as a lot of statistics and programming.
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. *Excepteur* sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id `est` laborum.
+<!-- Start of actual content -->
+<%
+def p(name)
+  #
+  # Method/function to display a page and possibly a list of links to its descendants
+  #
 
-Test
+  # find the corresponding page
+  res = sitemap.find_resource_by_path(name + ".html")
 
-* ldsvnsdf
-* vdbfg f
+  # 2 situations:
+  # - the page is a lone page, with no folder of the same name; in that case, just render it in place
+  # - there is a folder with the same name as the page, which contains other pages (i.e. files rendered into html); in that case render it in place but also make a list of links to the child pages
+  has_children = res.children.select { |child| child.path =~ /\.html/ }.any?
 
-vdbgbesrt
+  out = ""
 
-<% current_page.children.each do |category| %>
-<% if category.data %>
-<h3><%= category.data.title %></h3>
-<p><%= category.data.stub %></p>
+  # show the title
+  out = out + "<h2>" +
+        # ( has_children ? "" : "<a href='" + res.url + "'>" ) +  # only make it into a link if it does not have children
+        "<a href='" + res.url + "'>" +
+        ( res.data.title || res.url ) +
+        # ( has_children ? "" : "</a>" ) +
+        "</a>" +
+        "</h2>\n"
+  # and stub, if any
+  # if res.data.stub
+  #   out = out + "<p>" + res.data.stub + "</p>\n"
+  # end
 
-<% if category.children.select { |page| page.path =~ /\.html/ }.any? %>
-<% category.children.select { |page| page.path =~ /\.html/ }.each do |page| %>
-<ul>
-<li><a class="activity_title" href="<%= page.url %>"><%= page.data.title %></a>
-<%= page.data.stub %></li>
-</ul>
+  # show the content
+  out = out + res.render({layout: false})
 
-<% end %>
-<% end %>
-<% end %>
+  # if there are children, create a list of them
+  if has_children
+    out = out + "<ul class='page_list'>\n"
+    res.children.select { |child| child.path =~ /\.html/ }.each do |child|
+      out = out + "<li class='page_list'>"
+      out = out + "<a class='page_list' href='" + child.url + "'>" + ( child.data.title || child.url ) + "</a>&nbsp;" + ( child.data.stub || "" )
+      out = out + "</li>\n"
+    end
+    out = out + "</ul>\n"
+  end
+
+  return out
+end
+%>
+
+<%= p("teaching") %>
+
+<%= p("projects") %>

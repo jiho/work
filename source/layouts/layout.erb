@@ -1,94 +1,110 @@
 <!doctype html>
 <html>
   <head>
+    <!-- Bootstrap standard header -->
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-    <!-- Always force latest IE rendering engine or request Chrome Frame -->
-    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
-
-    <!-- Use title if it's in the page YAML frontmatter -->
+    <!-- Use page title if it's in the page YAML frontmatter -->
     <title><%= current_page.data.title || "Jean-Olivier Irisson" %></title>
 
-	<!-- Add favicon -->
-	<%= favicon_tag "favicon.png" %>
+    <!-- Add favicon -->
+    <%= favicon_tag "favicon.png" %>
 
-	<!-- jQuery -->
-	<%= javascript_include_tag "jquery-2.0.3" %>
-
-	<!-- Slimbox -->
-	<%= javascript_include_tag "slimbox2" %>
-	<%= stylesheet_link_tag "slimbox2" %>
-
-	<!-- Bootstrap -->
-	<%= javascript_include_tag "bootstrap" %>
-
-	<!-- Ensure proper rendering and zooming on mobile devices, with Bootstrap -->
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	<!-- Personal style customisation -->
-	<%= stylesheet_link_tag "jo" %>
+    <!-- Personalized version of Bootstrap CSS -->
+    <%= stylesheet_link_tag "jo", media: "all" %>
 
   </head>
 
   <body class="<%= page_classes %>">
 
-  	<div style="position: absolute; top: 0; right: 0">
-  		<canvas id="bubbles" width="500px" height="500px" class="pull-right">
-  		</canvas>
+    <div style="position: absolute; top: 0; right: 0">
+      <canvas id="bubbles" width="500px" height="500px" class="pull-right"></canvas>
+      <script>
+        var c=document.getElementById("bubbles");
+        var ctx=c.getContext("2d");
+      // Width and height of the region where content is actually drawn
+        var w=200;
+        var h=200;
+        for (var i=0; i<11; i++) {
+        // Location
+          var x=Math.random()*w;
+          var y=Math.random()*h;
+        // Radius: increases towards the top right
+        var scalingFactor=500;
+          var r=(h-y)*x / scalingFactor;
+          ctx.beginPath();
+          ctx.arc(x+300,y,r,0,2*Math.PI);
+        // NB: offset x position to avoid cutting circles on the edge of the canvas
+        // Set stroke to be blue like the rest of the website and less transparent when going towards the top
+              ctx.strokeStyle = 'rgba(51,51,175,' + (1-y/h) + ')';
+          ctx.stroke();
+        }
+      </script>
+    </div>
 
-  		<script>
-	  		var c=document.getElementById("bubbles");
-	  		var ctx=c.getContext("2d");
-			// Width and height of the region where content is actually drawn
-	  		var w=200;
-	  		var h=200;
-	  		for (var i=0; i<11; i++) {
-				// Location
-	  			var x=Math.random()*w;
-	  			var y=Math.random()*h;
-				// Radius: increases towards the top right
-				var scalingFactor=500;
-	  			var r=(h-y)*x / scalingFactor;
-	  			ctx.beginPath();
-	  			ctx.arc(x+300,y,r,0,2*Math.PI);
-				// NB: offset x position to avoid cutting circles on the edge of the canvas
-				// Set stroke to be blue like the rest of the website and less transparent when going towards the top
-	  	        ctx.strokeStyle = 'rgba(51,51,175,' + (1-y/h) + ')';
-	  			ctx.stroke();
-	  		}
-  		</script>
+    <div class="container">
 
-  	</div>
+      <header>
+        <div class="row">
+          <div class="col-sm-12">
+            <!-- Title -->
+            <!-- NB: a page has to have a title for navigation to work -->
+            <h1><%= current_page.data.title %></h1>
 
-	<div class="container">
-		<header>
-			<div class="row">
-				<div class="col-sm-12">
-					<%= partial "header" %>
-				</div>
-			</div>
-		</header>
+            <!-- Subtitle -->
+            <!-- When the stub is not present, take up the space anyway, to keep the breadcrumbs bar at the same location -->
+            <p class="lead cursive"><%= ( current_page.data.stub || "&nbsp;" ) %></p>
+          </div>
+        </div>
+      </header>
 
-		<div class="row">
-			<article class="col-sm-8">
-				<h2><%= current_page.data.title %></h2>
-				<!-- <div id="debug" onClick="debugg()"><p>Debug messages</p></div> -->
-				<%= yield %>
-			</article>
+      <!-- Main content -->
+      <div class="row">
+        <div  class="col-sm-8">
+          <!-- Breadcrumbs -->
+          <%
+          # Only if we are not at the home page (i.e. if the page has a parent)
+          if current_page.parent
+          %>
+          <div class="breadcrumb">
+            <%= render_navigation(:renderer => :breadcrumbs, :join_with => ' / ', :static_leaf => true, :prefix => "<a href='/'>Home</a> / ") %>
+          </div>
+          <% end %>
 
-			<aside class="col-sm-4 hidden-print">
-				<%= partial "sidebar"%>
-			</aside>
-		</div>
+          <!-- Content -->
+          <article>
+            <%= yield %>
+          </article>
+        </div>
 
-		<footer class="hidden-print">
-			<div class="row">
-				<div class="col-sm-12">
-					<%= partial "footer" %>
-				</div>
-			</div>
-		</footer>
-	</div>
+        <!-- Contact info -->
+        <aside class="col-sm-4 hidden-print">
+          <%= partial "sidebar"%>
+        </aside>
+      </div>
+
+      <hr>
+
+      <!-- Footer -->
+      <footer class="hidden-print">
+        <div class="row">
+          <div class="col-sm-12">
+            <%= partial "footer" %>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- Javascripts -->
+    <!-- // <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script> -->
 
   </body>
 </html>
