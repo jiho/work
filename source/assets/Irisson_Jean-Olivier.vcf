@@ -1,13 +1,16 @@
 BEGIN:VCARD
 VERSION:2.1
+PRODID:-//Apple Inc.//Mac OS X 10.9.1//EN
 N:Irisson;Jean-Olivier;;;
-FN:Irisson Jean-Olivier
-ORG;CHARSET=utf-8:Observatoire Océanologique de Villefranche-sur-Mer;LOV
-TITLE;CHARSET=utf-8:Maître de Conférences
-EMAIL;INTERNET;WORK:irisson@normalesup.org
-TEL;WORK:04 93 76 38 04
-ADR;WORK;CHARSET=utf-8:;;Observatoire Océanologique de Villefranche-sur-Mer\nStation Zoologique\, B.P. 28\, Chemin du Lazaret;Villefranche-sur-Mer;;06234;France
-URL;type=WORK;type=pref:http\://jo.irisson.com
-URL:skype\:jo.irisson
-BDAY;value=date:1980-07-10
+FN:Jean-Olivier Irisson
+ORG;CHARSET=UTF-8:Université Pierre et Marie Curie\, Observatoire Océanologique de Villefranche-sur-Mer;Laboratoire d'Océanographie de Villefranche (LOV)
+TITLE;CHARSET=UTF-8:Maître de Conférences
+EMAIL;INTERNET;WORK;pref:irisson@normalesup.org
+TEL;WORK;VOICE;pref:04 93 76 38 04
+TEL;CELL;VOICE:06 21 05 19 90
+ADR;WORK;pref:;;181 Chemin du Lazaret;Villefranche-sur-Mer;;06230;France
+URL;WORK;pref:http://obs-vlfr.fr/~irisson/
+URL:skype:jo.irisson
+UID:7EF41244-7F2D-4F17-9B61-BE57DE9295BF
+X-ABUID:5D08D9AB-73C5-48D4-A080-7BA6DDE1801D:ABPerson
 END:VCARD
