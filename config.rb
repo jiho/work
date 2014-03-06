@@ -45,12 +45,19 @@ activate :livereload
 #   end
 # end
 
+# Markdown engine configuration
 set :markdown_engine, :kramdown
-set :markdown, :layout_engine => :erb, 
-               :tables => true, 
-               :autolink => true,
-               :smartypants => true
-
+set :markdown,  :layout_engine => :erb,
+                # Use automatic header ID generation
+                :auto_ids => true,
+                # Parse markdown everywhere
+                :parse_block_html => true,
+                :parse_span_html => true,
+                # Better punctuation
+                :smartypants => true,
+                # Syntax highlighting (does not work for some reason...)
+                :enable_coderay => true,
+                :coderay_line_numbers => :inline
 set :css_dir, 'assets/stylesheets'
 
 set :js_dir, 'assets/javascripts'
