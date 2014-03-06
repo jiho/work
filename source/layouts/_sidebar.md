@@ -19,5 +19,5 @@ France<br>
 
 <form action="http://www.google.com/search" method="get">
 <input name="sitesearch" value="http://www.obs-vlfr.fr/~irisson/" type="hidden" />
-<input type="search" class="form-control" name="search" placeholder="Site Search"/>
+<input type="search" class="form-control" name="q" placeholder="Search this site"/>
 </form>
