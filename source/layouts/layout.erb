@@ -30,21 +30,21 @@
       <script>
         var c=document.getElementById("bubbles");
         var ctx=c.getContext("2d");
-      // Width and height of the region where content is actually drawn
+        // Width and height of the region where content is actually drawn
         var w=200;
         var h=200;
         for (var i=0; i<11; i++) {
-        // Location
+          // Location
           var x=Math.random()*w;
           var y=Math.random()*h;
-        // Radius: increases towards the top right
-        var scalingFactor=500;
+          // Radius: increases towards the top right
+          var scalingFactor=500;
           var r=(h-y)*x / scalingFactor;
           ctx.beginPath();
           ctx.arc(x+300,y,r,0,2*Math.PI);
-        // NB: offset x position to avoid cutting circles on the edge of the canvas
-        // Set stroke to be blue like the rest of the website and less transparent when going towards the top
-              ctx.strokeStyle = 'rgba(51,51,175,' + (1-y/h) + ')';
+          // NB: offset x position to avoid cutting circles on the edge of the canvas
+          // Set stroke to be blue like the rest of the website and less transparent when going towards the top
+          ctx.strokeStyle = 'rgba(51,51,175,' + (1-y/h) + ')';
           ctx.stroke();
         }
       </script>
