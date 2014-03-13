@@ -67,7 +67,8 @@ h1, h2, h3, h4, h5, h6 {
 
 
 // External links
-a[href^="http://"]:not([href*="obs-vlfr.fr"]):after,
-a[href^="https://"]:not([href*="obs-vlfr.fr"]):after{
-    content: " ⤤"
+article a:hover[href^="http://"]:not([href*="obs-vlfr.fr"]):after,
+article a:hover[href^="https://"]:not([href*="obs-vlfr.fr"]):after{
+    // content: " ⤤"
+    content: " " url(g2986.png)
 }
