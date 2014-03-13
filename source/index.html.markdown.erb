@@ -25,13 +25,13 @@ def p(name)
   out = ""
 
   # show the title
-  out = out + "<h2>" +
+  out = out + "<h3>" +
         # ( has_children ? "" : "<a href='" + res.url + "'>" ) +  # only make it into a link if it does not have children
         "<a href='" + res.url + "'>" +
         ( res.data.title || res.url ) +
         # ( has_children ? "" : "</a>" ) +
         "</a>" +
-        "</h2>\n"
+        "</h3>\n"
   # and stub, if any
   # if res.data.stub
   #   out = out + "<p>" + res.data.stub + "</p>\n"
