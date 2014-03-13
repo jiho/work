@@ -53,13 +53,17 @@ footer {
 
 // Aspect of headers
 h1, h2, h3, h4, h5, h6 {
-    color: #333333;
+    color: #000;
     a {
-        color: #333333;
+        color: #000;
     }
 }
 
-h1, h2, h3, h4, h5, h6 {
+.lead a {
+    color: @text-color;
+}
+
+h1, h2, h3, h4, h5, h6, .lead {
 	a:hover {
         text-decoration: none;
     }
